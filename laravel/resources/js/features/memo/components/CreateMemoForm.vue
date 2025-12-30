@@ -1,35 +1,36 @@
 <script setup lang="ts">
-    import PlusSvg from "@/features/memo/svgs/PlusSvg.vue";
-    import {useCreateMemoForm} from "@/features/memo/composable/useCreateMemoForm.ts";
+import PlusSvg from "@/features/memo/svgs/PlusSvg.vue";
+import { useCreateMemoForm, submit } from "@/features/memo/composable/useCreateMemoForm.ts";
 
-    const { content, error, isSubmitted, setMemoContent, submit } = useCreateMemoForm();
+const { content, error, isSubmitted, setMemoContent, submit } = useCreateMemoForm();
 </script>
 
 <template>
-    <div class=" p-6 bg-white rounded-lg shadow-lg">
-        <h2 class="font-semibold text-gray-800 flex items-center gap-2 text-lg mb-4 ">
-            <PlusSvg />
-            新しいメモ
-        </h2>
-        <form action="" class="space-y-4">
-            <span v-if="error" class="text-sm text-red-500">
-                {{error}}
-            </span>
-            <textarea
-                @input="setMemoContent(($event.target as HTMLTextAreaElement).value)"
-                placeholder="メモを入力してください...&#10;（Enterで保存、Shift+Enterで改行）"
-                class="w-full px-4 py-6 text-gray-700 border border-gray rounded-lg resize-none focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none" rows="4" />
-            <button
-                type="submit"
-                :disabled="error || !content || isSubmitted"
-                class="bg-orange-500 w-full rounded-md text-white py-3 px-6 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
-                <PlusSvg class="text-white" />
-                メモを保存
-            </button>
-        </form>
-    </div>
+  <div class="rounded-lg bg-white p-6 shadow-lg">
+    <h2 class="mb-4 flex items-center gap-2 text-lg font-semibold text-gray-800">
+      <PlusSvg />
+      新しいメモ
+    </h2>
+    <form @submit.prevent="submit" class="space-y-4">
+      <span v-if="error" class="text-sm text-red-500">
+        {{ error }}
+      </span>
+      <textarea
+        @input="setMemoContent(($event.target as HTMLTextAreaElement).value)"
+        placeholder="メモを入力してください...&#10;（Enterで保存、Shift+Enterで改行）"
+        class="border-gray w-full resize-none rounded-lg border px-4 py-6 text-gray-700 outline-none focus:border-transparent focus:ring-2 focus:ring-orange-500"
+        rows="4"
+      />
+      <button
+        type="submit"
+        :disabled="error || !content || isSubmitted"
+        class="flex w-full items-center justify-center gap-2 rounded-md bg-orange-500 px-6 py-3 text-white disabled:cursor-not-allowed disabled:opacity-50"
+      >
+        <PlusSvg class="text-white" />
+        メモを保存
+      </button>
+    </form>
+  </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
