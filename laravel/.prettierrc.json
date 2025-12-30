@@ -2,7 +2,7 @@
     "$schema": "https://json.schemastore.org/prettierrc",
     "tabWidth": 2,
     "printWidth": 100,
-    "plugins": [],
+    "plugins": ["prettier-plugin-tailwindcss"],
     "bracketSpacing": true,
     "trailingComma": "all",
     "overrides": []
