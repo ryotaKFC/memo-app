@@ -1,16 +1,20 @@
 import { ref } from "vue";
-import * as v from "valibot";
-import { CreationMemoSchema, type CreationMemo } from "@/features/memo/schemas";
+import v from "@/entities/valibot.ts";
 import { useMemoStore } from "@/features/memo/stores/memo.ts";
+import { Memo } from "@/entities/memo.ts";
 
 export function useCreateMemoForm() {
+  // メモ作成時はid不明なので、omitでMemo型からid, createdAtを抜いた型を作成する
+  const CreationMemo = v.omit(Memo, ["id", "createdAt"]);
+  type CreationMemo = v.InferInput<typeof CreationMemo>;
+
   const content = ref<string>("");
 
   const error = ref<string | null>(null);
   const isSubmitted = ref(false);
 
   function validate(newMemo: CreationMemo) {
-    const result = v.safeParse(CreationMemoSchema, newMemo);
+    const result = v.safeParse(CreationMemo, newMemo);
 
     if (result.success) {
       error.value = null;
