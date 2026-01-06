@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import PlusSvg from "@/features/memo/svgs/PlusSvg.vue";
-import { useCreateMemoForm, submit } from "@/features/memo/composable/useCreateMemoForm.ts";
+import { useCreateMemoForm } from "@/features/memo/composable/useCreateMemoForm.ts";
 
-const { content, error, isSubmitted, setMemoContent, submit } = useCreateMemoForm();
+const { content, error, isSubmitted, submit, setMemoContent } = useCreateMemoForm();
 </script>
 
 <template>
@@ -16,7 +16,9 @@ const { content, error, isSubmitted, setMemoContent, submit } = useCreateMemoFor
         {{ error }}
       </span>
       <textarea
-        @input="setMemoContent(($event.target as HTMLTextAreaElement).value)"
+        @input="setMemoContent"
+        @keydown.enter.exact.prevent="submit"
+        :value="content"
         placeholder="メモを入力してください...&#10;（Enterで保存、Shift+Enterで改行）"
         class="border-gray w-full resize-none rounded-lg border px-4 py-6 text-gray-700 outline-none focus:border-transparent focus:ring-2 focus:ring-orange-500"
         rows="4"

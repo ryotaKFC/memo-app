@@ -25,14 +25,11 @@ export function useCreateMemoForm() {
     }
   }
 
-  function setMemoContent(value: string) {
+  //targetの型が不明なので型指定
+  function setMemoContent(e: { target: HTMLTextAreaElement }) {
+    const value = e.target.value;
     content.value = value;
-
-    const newMemo: CreationMemo = {
-      content: value,
-    };
-
-    validate(newMemo);
+    validate({ content: value });
   }
 
   async function submit() {
