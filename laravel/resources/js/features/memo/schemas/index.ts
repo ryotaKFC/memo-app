@@ -12,5 +12,11 @@ export const CreationMemoSchema = v.object({
 export const MemoSchema = v.object({
   id: v.number(),
   content: Content,
-  createdAt: v.string(),
+  createdAt: v.date(),
+});
+
+export const ApiMemoSchema = v.object({
+  id: v.number(),
+  content: v.string(),
+  created_at: v.toDate(),
 });
