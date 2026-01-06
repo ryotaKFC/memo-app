@@ -11,7 +11,7 @@ export const useMemoStore = defineStore("memo", () => {
 
   // メモの保存 + memos更新
   async function createMemo(memo: CreationMemo) {
-    const res = await axios.post("/memo/store", memo);
+    const res = await axios.post("/api/memo", memo);
 
     const parsedMemo = v.parse(ApiMemoToMemo, res.data);
 
