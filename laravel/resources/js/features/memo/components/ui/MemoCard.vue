@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Memo } from "@/features/memo/types";
+import { formatCreatedAt } from "@/features/memo/utils/formatCreatedAt.ts";
 
 const props = defineProps<{
   memo: Memo;
@@ -13,7 +14,7 @@ const props = defineProps<{
     <div class="flex items-start justify-between gap-4">
       <div class="flex-1">
         <p class="whitespace-pre-wrap leading-relaxed text-gray-800">{{ props.memo.content }}</p>
-        <p class="mt-3 text-xs text-gray-400">{{ props.memo.createdAt }}</p>
+        <p class="mt-3 text-xs text-gray-400">{{ formatCreatedAt(props.memo.createdAt) }}</p>
       </div>
     </div>
   </div>
