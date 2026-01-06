@@ -1,6 +1,6 @@
 import { ApiMemo, Memo } from "@/features/memo/types";
 
-export function toMemo(apiMemo: ApiMemo): Mmeo {
+export function toMemo(apiMemo: ApiMemo): Memo {
   return {
     id: apiMemo.id,
     content: apiMemo.content,
