@@ -14,7 +14,7 @@ onMounted(async () => {
 
 <template>
   <Header />
-  <main class="mx-auto max-w-2xl px-6 py-8">
+  <main class="mx-auto max-w-2xl space-y-12 px-6 py-8">
     <CreateMemoForm />
     <MemoList />
   </main>
