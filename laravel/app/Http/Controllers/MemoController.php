@@ -17,4 +17,10 @@ class MemoController extends Controller
 
         return response()->json($memo, 201);
     }
+
+    public function index() {
+        $memos = Memo::all();
+
+        return response()->json($memos, 200);
+    }
 }
