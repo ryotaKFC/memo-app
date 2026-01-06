@@ -1,5 +1,10 @@
 import * as v from "valibot";
-import {CreationMemoSchema, MemoSchema} from "@/features/memo/schemas";
+import { CreationMemoSchema, MemoSchema } from "@/features/memo/schemas";
 
 export type CreationMemo = v.InferOutput<typeof CreationMemoSchema>;
 export type Memo = v.InferOutput<typeof MemoSchema>;
+export type ApiMemo = {
+  id: number;
+  content: string;
+  created_at: string;
+};

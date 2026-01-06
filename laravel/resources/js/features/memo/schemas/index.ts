@@ -10,6 +10,7 @@ export const CreationMemoSchema = v.object({
   content: Content,
 });
 export const MemoSchema = v.object({
+  id: v.number(),
   content: Content,
   createdAt: v.string(),
 });
