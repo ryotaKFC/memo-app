@@ -14,5 +14,9 @@
       "database": "laravel",
       "username": "laravel"
     }
-  ]
+  ],
+  "editor.formatOnSave": true,
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
