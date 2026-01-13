@@ -1,13 +1,8 @@
 import { ref } from "vue";
 import v from "@/entities/valibot.ts";
-import { useMemoStore } from "@/features/memo/stores/memo.ts";
-import { Memo } from "@/entities/memo.ts";
+import { CreationMemo, useMemoStore } from "@/entities/memo";
 
 export function useCreateMemoForm() {
-  // メモ作成時はid不明なので、omitでMemo型からid, createdAtを抜いた型を作成する
-  const CreationMemo = v.omit(Memo, ["id", "createdAt"]);
-  type CreationMemo = v.InferInput<typeof CreationMemo>;
-
   const content = ref<string>("");
 
   const error = ref<string | null>(null);
@@ -26,8 +21,8 @@ export function useCreateMemoForm() {
   }
 
   //targetの型が不明なので型指定
-  function setMemoContent(e: { target: HTMLTextAreaElement }) {
-    const value = e.target.value;
+  function setMemoContent(e: Event) {
+    const value = (e.target as HTMLTextAreaElement).value;
     content.value = value;
     validate({ content: value });
   }

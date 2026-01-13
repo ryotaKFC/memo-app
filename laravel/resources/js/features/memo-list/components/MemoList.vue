@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import DocumentSvg from "@/components/svgs/DocumentSvg.vue";
-import MemoCountBadge from "@/features/memo/components/ui/MemoCountBadge.vue";
-import { useMemoStore } from "@/features/memo/stores/memo.ts";
 import { computed } from "vue";
-import MemoCard from "@/features/memo/components/ui/MemoCard.vue";
-import { Memo } from "@/entities/memo.ts";
+import { useMemoStore } from "@/entities/memo";
+import MemoCard from "../components/MemoCard.vue";
+import MemoCountBadge from "../components/MemoCountBadge.vue";
 
 const memoStore = useMemoStore();
-const memos: Memo[] = computed(() =>
+const memos = computed(() =>
   [...memoStore.memos].sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   ),

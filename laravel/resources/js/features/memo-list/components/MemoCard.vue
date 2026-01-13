@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { formatCreatedAt } from "@/features/memo/utils/formatCreatedAt.ts";
-import { Memo } from "@/entities/memo.ts";
+import { Memo } from "@/entities/memo";
+import { formatCreatedAt } from "@/lib/formatCreatedAt";
 
 const props = defineProps<{
   memo: Memo;

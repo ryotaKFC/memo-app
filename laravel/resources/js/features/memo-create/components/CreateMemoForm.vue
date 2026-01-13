@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import PlusSvg from "@/features/memo/svgs/PlusSvg.vue";
-import { useCreateMemoForm } from "@/features/memo/composable/useCreateMemoForm.ts";
+import { useCreateMemoForm } from "../composable/useCreateMemoForm";
+import PlusSvg from "@/components/svgs/PlusSvg.vue";
 
 const { content, error, isSubmitted, submit, setMemoContent } = useCreateMemoForm();
 </script>
@@ -25,7 +25,7 @@ const { content, error, isSubmitted, submit, setMemoContent } = useCreateMemoFor
       />
       <button
         type="submit"
-        :disabled="error || !content || isSubmitted"
+        :disabled="!!error || !content || isSubmitted"
         class="flex w-full items-center justify-center gap-2 rounded-md bg-orange-500 px-6 py-3 text-white disabled:cursor-not-allowed disabled:opacity-50"
       >
         <PlusSvg class="text-white" />
