@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useMemoStore } from '@/entities/memo';
-import { onMounted } from 'vue';
-import SiteHeader from '@/components/SiteHeader.vue';
-import CreateMemoForm from '@/features/create-memo/components/CreateMemoForm.vue';
-import MemoList from '@/features/memo-list/components/MemoList.vue';
+import { useMemoStore } from "@/entities/memo";
+import { onMounted } from "vue";
+import SiteHeader from "@/components/SiteHeader.vue";
+import CreateMemoForm from "@/features/memo-create/components/CreateMemoForm.vue";
+import MemoList from "@/features/memo-list/components/MemoList.vue";
 
 const memoStore = useMemoStore();
 
