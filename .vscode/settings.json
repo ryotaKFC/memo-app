@@ -1,18 +1,18 @@
 {
-    "sqltools.connections": [
-        {
-            "mysqlOptions": {
-                "authProtocol": "default",
-                "enableSsl": "Disabled"
-            },
-            "ssh": "Disabled",
-            "previewLimit": 50,
-            "server": "localhost",
-            "port": 43306,
-            "driver": "MySQL",
-            "name": "laravel@localhost",
-            "database": "laravel",
-            "username": "laravel"
-        }
-    ]
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default",
+        "enableSsl": "Disabled"
+      },
+      "ssh": "Disabled",
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 43306,
+      "driver": "MySQL",
+      "name": "laravel@localhost",
+      "database": "laravel",
+      "username": "laravel"
+    }
+  ]
 }
