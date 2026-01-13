@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useMemoStore } from '@/entities/memo';
 import { onMounted } from 'vue';
-import Header from '@/components/Header.vue';
+import SiteHeader from '@/components/SiteHeader.vue';
 import CreateMemoForm from '@/features/create-memo/components/CreateMemoForm.vue';
 import MemoList from '@/features/memo-list/components/MemoList.vue';
 
@@ -13,7 +13,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Header />
+  <SiteHeader />
   <main class="mx-auto max-w-2xl space-y-12 px-6 py-8">
     <CreateMemoForm />
     <MemoList />
