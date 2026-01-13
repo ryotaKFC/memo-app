@@ -8,7 +8,7 @@ import MemoList from "@/features/memo-list/components/MemoList.vue";
 const memoStore = useMemoStore();
 
 onMounted(async () => {
-  await memoStore.fetchMemos();
+  await memoStore.getMemos();
 });
 </script>
 

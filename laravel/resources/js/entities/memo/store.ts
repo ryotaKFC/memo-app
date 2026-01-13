@@ -1,29 +1,31 @@
-import axios from "axios";
-import { ApiMemoToMemo, Memo } from "./schemas";
 import { ref } from "vue";
-import v from "@/entities/valibot.ts";
 import { defineStore } from "pinia";
+import { createMemo, fetchMemos } from "./apis";
+import { Memo } from ".";
 
 export const useMemoStore = defineStore("memo", () => {
   const memos = ref<Memo[]>([]);
 
-  // ToDo: API周りは別ファイルに切り出す
-  async function createMemo(memo: Omit<Memo, "id" | "createdAt">) {
-    const res = await axios.post("/api/memo", memo);
-
-    const parsedMemo = v.parse(ApiMemoToMemo, res.data);
-    memos.value.unshift(parsedMemo);
+  /**
+   * Laravelへ新しいメモを作成してstoreに追加する
+   * @param memo
+   */
+  async function addMemo(memo: Omit<Memo, "id" | "createdAt">) {
+    const res = await createMemo(memo);
+    memos.value.unshift(res);
   }
 
-  async function fetchMemos() {
-    const res = await axios.get("/api/memo");
-    const parsed = v.parse(v.array(ApiMemoToMemo), res.data);
-    memos.value = parsed;
+  /**
+   * Laravelからメモをすべて取得してstoreに保存する
+   */
+  async function getMemos() {
+    const res = await fetchMemos();
+    memos.value = res;
   }
 
   return {
     memos,
-    createMemo,
-    fetchMemos,
+    addMemo,
+    getMemos,
   };
 });

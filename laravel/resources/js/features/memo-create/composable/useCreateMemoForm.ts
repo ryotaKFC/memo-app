@@ -2,9 +2,10 @@ import { ref } from "vue";
 import v from "@/entities/valibot.ts";
 import { CreationMemo, useMemoStore } from "@/entities/memo";
 
+const memoStore = useMemoStore();
+
 export function useCreateMemoForm() {
   const content = ref<string>("");
-
   const error = ref<string | null>(null);
   const isSubmitted = ref(false);
 
@@ -35,8 +36,7 @@ export function useCreateMemoForm() {
     if (isSubmitted.value || !validate(newMemo)) return;
     isSubmitted.value = true;
 
-    const memoStore = useMemoStore();
-    await memoStore.createMemo(newMemo);
+    await memoStore.addMemo(newMemo);
 
     content.value = "";
     error.value = null;

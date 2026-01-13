@@ -15,7 +15,9 @@ export const Memo = v.object({
 export type Memo = v.InferOutput<typeof Memo>;
 
 // メモ作成時用の型
-export const CreationMemo = v.omit(Memo, ["id", "createdAt"]);
+export const CreationMemo = v.object({
+  content: Content,
+});
 export type CreationMemo = v.InferInput<typeof CreationMemo>;
 
 // LaravelからのデータをMemoに変換する
