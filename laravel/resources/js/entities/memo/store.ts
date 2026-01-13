@@ -1,26 +1,24 @@
-// stores/counter.ts
-import { defineStore } from "pinia";
-import { ref } from "vue";
 import axios from "axios";
+import { ApiMemoToMemo, Memo } from "./schemas";
+import { ref } from "vue";
 import v from "@/entities/valibot.ts";
-import { ApiMemoToMemo, Memo } from "@/entities/memo.ts";
+import { defineStore } from "pinia";
 
 export const useMemoStore = defineStore("memo", () => {
-  // state
   const memos = ref<Memo[]>([]);
 
-  // メモの保存 + memos更新
-  async function createMemo(memo: CreationMemo) {
+  // ToDo: API周りは別ファイルに切り出す
+  async function createMemo(memo: Omit<Memo, "id" | "createdAt">) {
     const res = await axios.post("/api/memo", memo);
 
     const parsedMemo = v.parse(ApiMemoToMemo, res.data);
-
     memos.value.unshift(parsedMemo);
   }
 
   async function fetchMemos() {
     const res = await axios.get("/api/memo");
-    memos.value = res.data.map((item) => v.parse(ApiMemoToMemo, item));
+    const parsed = v.parse(v.array(ApiMemoToMemo), res.data);
+    memos.value = parsed;
   }
 
   return {
