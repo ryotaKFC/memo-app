@@ -1,47 +1,32 @@
-import { ref } from "vue";
-import v from "@/entities/valibot.ts";
-import { CreationMemo, useMemoStore } from "@/entities/memo";
+import { computed, ref } from "vue";
+import { CreationMemo, MemoContent, useMemoStore } from "@/entities/memo";
+import { useFormValue } from "@/composables/useFormValue";
 
 const memoStore = useMemoStore();
 
 export function useCreateMemoForm() {
-  const content = ref<string>("");
-  const error = ref<string | null>(null);
+  const content = useFormValue("", MemoContent);
   const isSubmitted = ref(false);
+  const disabledSubmit = computed(() => isSubmitted.value || !!content.error || !content.value);
 
-  function validate(newMemo: CreationMemo) {
-    const result = v.safeParse(CreationMemo, newMemo);
-
-    if (result.success) {
-      error.value = null;
-      return true;
-    } else {
-      error.value = result.issues[0]?.message ?? "入力が不正です！";
-      return false;
-    }
-  }
-
-  //targetの型が不明なので型指定
-  function setMemoContent(e: Event) {
-    const value = (e.target as HTMLTextAreaElement).value;
-    content.value = value;
-    validate({ content: value });
-  }
-
+  // メモ送信時の処理
   async function submit() {
     const newMemo: CreationMemo = {
       content: content.value,
     };
+    if (disabledSubmit.value) return;
 
-    if (isSubmitted.value || !validate(newMemo)) return;
     isSubmitted.value = true;
 
     await memoStore.addMemo(newMemo);
 
-    content.value = "";
-    error.value = null;
+    resetForm();
+  }
+
+  function resetForm() {
+    content.reset();
     isSubmitted.value = false;
   }
 
-  return { content, setMemoContent, submit, error, isSubmitted };
+  return { content, submit, disabledSubmit };
 }
