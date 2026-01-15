@@ -2,7 +2,7 @@
 import { useCreateMemoForm } from "../composable/useCreateMemoForm";
 import PlusSvg from "@/components/svgs/PlusSvg.vue";
 
-const { content, error, isSubmitted, submit, setMemoContent } = useCreateMemoForm();
+const { content, disabledSubmit, submit } = useCreateMemoForm();
 </script>
 
 <template>
@@ -12,20 +12,21 @@ const { content, error, isSubmitted, submit, setMemoContent } = useCreateMemoFor
       新しいメモ
     </h2>
     <form @submit.prevent="submit" class="space-y-4">
-      <span v-if="error" class="text-sm text-red-500">
-        {{ error }}
+      <span v-if="content.isFocused" class="text-sm text-red-500">
+        {{ content.error }}
       </span>
       <textarea
-        @input="setMemoContent"
+        @focus="content.onFocus"
+        @blur="content.onBlur"
         @keydown.enter.exact.prevent="submit"
-        :value="content"
+        v-model="content.value"
         placeholder="メモを入力してください...&#10;（Enterで保存、Shift+Enterで改行）"
         class="border-gray w-full resize-none rounded-lg border px-4 py-6 text-gray-700 outline-none focus:border-transparent focus:ring-2 focus:ring-orange-500"
         rows="4"
       />
       <button
         type="submit"
-        :disabled="!!error || !content || isSubmitted"
+        :disabled="disabledSubmit"
         class="flex w-full items-center justify-center gap-2 rounded-md bg-orange-500 px-6 py-3 text-white disabled:cursor-not-allowed disabled:opacity-50"
       >
         <PlusSvg class="text-white" />
