@@ -28,11 +28,11 @@ class MemoController extends Controller
         $memo = Memo::find($id);
         
         if (!$memo) {
-            return response()->json(['message' => 'Memo not found'], 404);
+            return response()->json(['message' => 'メモが見つかりませんでした'], 404);
         }
 
         $memo->delete();
 
-        return response()->json(['message' => 'Memo deleted successfully'], 200);
+        return response()->json([], 204);
     }
 }
