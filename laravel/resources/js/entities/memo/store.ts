@@ -1,6 +1,6 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
-import { createMemo, fetchMemos } from "./apis";
+import { createMemo, fetchMemos, removeMemo } from "./apis";
 import { Memo } from ".";
 
 export const useMemoStore = defineStore("memo", () => {
@@ -23,9 +23,17 @@ export const useMemoStore = defineStore("memo", () => {
     memos.value = res;
   }
 
+  async function deleteMemo(id: number) {
+    const success = await removeMemo(id);
+    if (success) {
+      memos.value = memos.value.filter((memo) => memo.id !== id);
+    }
+  }
+
   return {
     memos,
     addMemo,
     getMemos,
+    deleteMemo,
   };
 });

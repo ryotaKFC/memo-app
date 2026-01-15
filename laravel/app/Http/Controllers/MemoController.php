@@ -23,4 +23,16 @@ class MemoController extends Controller
 
         return response()->json($memos, 200);
     }
+
+    public function destroy($id) {
+        $memo = Memo::find($id);
+        
+        if (!$memo) {
+            return response()->json(['message' => 'メモが見つかりませんでした'], 404);
+        }
+
+        $memo->delete();
+
+        return response()->json([], 204);
+    }
 }
