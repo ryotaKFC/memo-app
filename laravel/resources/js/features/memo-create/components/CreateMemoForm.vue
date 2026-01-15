@@ -12,12 +12,11 @@ const { content, disabledSubmit, submit } = useCreateMemoForm();
       新しいメモ
     </h2>
     <form @submit.prevent="submit" class="space-y-4">
-      <span v-if="content.isFocused" class="text-sm text-red-500">
+      <span v-if="content.isFocused && content.error" class="text-sm text-red-500">
         {{ content.error }}
       </span>
       <textarea
         @focus="content.onFocus"
-        @blur="content.onBlur"
         @keydown.enter.exact.prevent="submit"
         v-model="content.value"
         placeholder="メモを入力してください...&#10;（Enterで保存、Shift+Enterで改行）"
