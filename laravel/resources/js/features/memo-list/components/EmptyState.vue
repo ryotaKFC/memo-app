@@ -9,5 +9,3 @@ import DocumentSvg from "@/components/svgs/DocumentSvg.vue";
     <p class="text-sm text-gray-400">上の入力欄からメモを作成してみましょう！</p>
   </div>
 </template>
-
-<style scoped></style>
