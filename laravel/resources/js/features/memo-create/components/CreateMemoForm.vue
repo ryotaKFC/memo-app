@@ -34,5 +34,3 @@ const { content, disabledSubmit, submit } = useCreateMemoForm();
     </form>
   </div>
 </template>
-
-<style scoped></style>

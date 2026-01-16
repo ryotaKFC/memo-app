@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useMemoStore } from "@/entities/memo";
+import SiteFooter from "@/components/SiteFooter.vue";
 import { onMounted } from "vue";
 import SiteHeader from "@/components/SiteHeader.vue";
 import CreateMemoForm from "@/features/memo-create/components/CreateMemoForm.vue";
@@ -18,4 +19,5 @@ onMounted(async () => {
     <CreateMemoForm />
     <MemoList />
   </main>
+  <SiteFooter />
 </template>
