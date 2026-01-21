@@ -1,5 +1,6 @@
+<!-- コンポーネント名Headerだとmulti-word-component-names警告がでるためこの名前 -->
 <script setup lang="ts">
-import DocumentSvg from "@/components/svgs/DocumentSvg.vue";
+import DocumentSvg from "@/shared/components/svgs/DocumentSvg.vue";
 </script>
 
 <template>

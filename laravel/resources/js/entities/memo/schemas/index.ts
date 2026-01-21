@@ -1,4 +1,4 @@
-import v from "@/entities/valibot.ts";
+import * as v from "valibot";
 
 // メモの内容
 export const MemoContent = v.pipe(

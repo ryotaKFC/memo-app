@@ -1,16 +1,8 @@
 <script setup lang="ts">
-import { useMemoStore } from "@/entities/memo";
-import SiteFooter from "@/components/SiteFooter.vue";
-import { onMounted } from "vue";
-import SiteHeader from "@/components/SiteHeader.vue";
-import CreateMemoForm from "@/features/memo-create/components/CreateMemoForm.vue";
-import MemoList from "@/features/memo-list/components/MemoList.vue";
-
-const memoStore = useMemoStore();
-
-onMounted(async () => {
-  await memoStore.getMemos();
-});
+import SiteFooter from "@/widgets/site-footer/components/SiteFooter.vue";
+import SiteHeader from "@/widgets/site-header/components/SiteHeader.vue";
+import CreateMemoForm from "@/widgets/create-memo-form/components/CreateMemoForm.vue";
+import MemoList from "@/widgets/memo-list/components/MemoList.vue";
 </script>
 
 <template>

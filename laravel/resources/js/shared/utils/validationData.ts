@@ -1,5 +1,5 @@
 import { GenericSchema } from "valibot";
-import v from "@/entities/valibot.ts";
+import * as v from "valibot";
 
 /**
  * 値を指定したスキーマで検証し、検証後の値とエラーメッセージを返す
