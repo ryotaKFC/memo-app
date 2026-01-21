@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Memo } from "@/entities/memo";
-import { formatDate } from "@/lib/formatDate";
-import DeleteButton from "@/features/memo-delete/components/DeleteButton.vue";
+import DeleteButton from "@/features/delete-memo/components/DeleteButton.vue";
 import { ref } from "vue";
+import { formatDate } from "@/shared/utils/formatDate";
+import { Memo } from "@/entities/memo/schemas";
 
 const props = defineProps<{
   memo: Memo;
