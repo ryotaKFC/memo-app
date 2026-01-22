@@ -1,7 +1,7 @@
 import { computed, ref } from "vue";
 import { useFormValue } from "@/shared/composables/useFormValue";
 import { CreationMemo, MemoContent } from "@/entities/memo/schemas";
-import { submitMemo } from "@/features/submit-memo/api/submitMemo";
+import { createMemo } from "@/features/create-memo/api/createMemo";
 
 export function useCreateMemoForm() {
   const content = useFormValue("", MemoContent);
@@ -16,7 +16,7 @@ export function useCreateMemoForm() {
     if (disabledSubmit.value) return;
 
     isSubmitted.value = true;
-    await submitMemo(newMemo);
+    await createMemo(newMemo);
     resetForm();
   }
 
