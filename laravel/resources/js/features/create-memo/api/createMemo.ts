@@ -11,7 +11,7 @@ const memoStore = useMemoStore();
  * @param newMemo
  * @returns
  */
-export async function submitMemo(
+export async function createtMemo(
   newMemo: CreationMemo,
 ): Promise<{ success: boolean; message?: string; error?: unknown }> {
   try {
