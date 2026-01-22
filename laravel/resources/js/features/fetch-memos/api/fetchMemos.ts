@@ -9,15 +9,15 @@ const memoStore = useMemoStore();
  * Laravelからメモをすべて取得する
  * @returns 取得したメモをすべて返す
  */
-export async function fetchMemos(): Promise<Memo[]> {
+export async function fetchMemos(): Promise<{ success: boolean; data?: Memo[]; error?: unknown }> {
   try {
     const res = await axios.get(MEMO_API);
     const parsedMemo = v.parse(v.array(ApiMemoToMemo), res.data);
     memoStore.setMemos(parsedMemo);
 
-    return parsedMemo;
+    return { success: true, data: parsedMemo };
   } catch (error) {
     console.error("メモを取得できませんでした", error);
-    throw error;
+    return { success: false, error };
   }
 }

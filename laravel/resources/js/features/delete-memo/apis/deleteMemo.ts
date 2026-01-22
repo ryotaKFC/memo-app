@@ -9,13 +9,13 @@ const memoStore = useMemoStore();
  * @param id
  * @returns 削除が成功したかどうか
  */
-export async function deleteMemoById(id: number): Promise<boolean> {
+export async function deleteMemo(id: number): Promise<{ success: boolean; error?: unknown }> {
   try {
     await axios.delete(`${MEMO_API}/${id}`);
     memoStore.deleteMemoById(id);
-    return true;
+    return { success: true };
   } catch (error) {
     console.error("メモを削除できませんでした", error);
-    throw error;
+    return { success: false, error };
   }
 }
