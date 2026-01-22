@@ -11,13 +11,16 @@ const memoStore = useMemoStore();
  * @param newMemo
  * @returns
  */
-export async function submitMemo(newMemo: CreationMemo): Promise<void> {
+export async function submitMemo(
+  newMemo: CreationMemo,
+): Promise<{ success: boolean; message?: string; error?: unknown }> {
   try {
     const res = await axios.post(MEMO_API, newMemo);
     const parsedMemo = v.parse(ApiMemoToMemo, res.data);
     memoStore.addMemo(parsedMemo);
+    return { success: true };
   } catch (error) {
     console.error("メモを作成できませんでした", error);
-    throw error;
+    return { success: false, error };
   }
 }
