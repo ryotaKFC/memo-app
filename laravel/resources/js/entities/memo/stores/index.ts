@@ -21,6 +21,10 @@ export const useMemoStore = defineStore("memo", () => {
     memos.value = newMemos;
   }
 
+  /**
+   * 指定されたIDのメモをstoreから削除する
+   * @param memoId 削除するメモのID
+   */
   function deleteMemoById(memoId: number) {
     memos.value = memos.value.filter((memo) => memo.id !== memoId);
   }
