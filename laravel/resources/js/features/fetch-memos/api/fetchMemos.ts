@@ -1,6 +1,6 @@
 import { ApiMemoToMemo, Memo } from "@/entities/memo/schemas";
 import { useMemoStore } from "@/entities/memo/stores";
-import { BASEURL } from "@/shared/constans/urls";
+import { MEMO_API } from "@/shared/constants/urls";
 import axios from "axios";
 import * as v from "valibot";
 
@@ -11,7 +11,7 @@ const memoStore = useMemoStore();
  */
 export async function fetchMemos(): Promise<Memo[]> {
   try {
-    const res = await axios.get(BASEURL);
+    const res = await axios.get(MEMO_API);
     const parsedMemo = v.parse(v.array(ApiMemoToMemo), res.data);
     memoStore.setMemos(parsedMemo);
 

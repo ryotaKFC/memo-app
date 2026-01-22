@@ -1,5 +1,5 @@
 import { useMemoStore } from "@/entities/memo/stores";
-import { BASEURL } from "@/shared/constans/urls";
+import { MEMO_API } from "@/shared/constants/urls";
 import axios from "axios";
 
 const memoStore = useMemoStore();
@@ -11,7 +11,7 @@ const memoStore = useMemoStore();
  */
 export async function deleteMemoById(id: number): Promise<boolean> {
   try {
-    await axios.delete(`${BASEURL}/${id}`);
+    await axios.delete(`${MEMO_API}/${id}`);
     memoStore.deleteMemoById(id);
     return true;
   } catch (error) {
