@@ -12,9 +12,7 @@ const { content, disabledSubmit, submit } = useCreateMemoForm();
       新しいメモ
     </h2>
     <form @submit.prevent="submit" class="space-y-4">
-      <span v-if="content.isFocused && content.error" class="text-sm text-red-500">
-        {{ content.error }}
-      </span>
+      <ErrorMessage :message="content.error" />
       <textarea
         @focus="content.onFocus"
         @keydown.enter.exact.prevent="submit"
