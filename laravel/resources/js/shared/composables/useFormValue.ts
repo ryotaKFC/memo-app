@@ -11,31 +11,27 @@ import { validationData } from "@/shared/utils/validationData";
  */
 export function useFormValue<T>(initialValue: T, schema: GenericSchema<unknown, T>) {
   const value = ref<T>(initialValue);
-  const isFocused = ref(false);
+  const isTouched = ref(false);
   const error = computed(() => {
+    if (!isTouched.value) return null;
+
     const { errors } = validationData(value.value, schema);
     return errors[0] || null;
   });
 
   function reset() {
     value.value = initialValue;
-    isFocused.value = false;
+    isTouched.value = false;
   }
 
   function onFocus() {
-    isFocused.value = true;
-  }
-
-  function onBlur() {
-    isFocused.value = false;
+    isTouched.value = true;
   }
 
   return reactive({
     value,
     error,
-    isFocused,
     onFocus,
-    onBlur,
     reset,
   });
 }
