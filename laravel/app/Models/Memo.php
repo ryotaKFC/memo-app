@@ -9,4 +9,8 @@ class Memo extends Model
 {
     use HasFactory;
     protected $fillable = ["content"];
+
+    public function tags() {
+        return $this->belongsToMany(Tag::class, 'memos_tags', 'memo_id', 'tag_id');
+    }
 }
