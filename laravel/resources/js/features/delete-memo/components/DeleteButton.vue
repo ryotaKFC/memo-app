@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TrashSvg from "@/shared/components/svgs/TrashSvg.vue";
+import TrashSvg from "@/components/svgs/TrashSvg.vue";
 import { deleteMemo } from "@/features/delete-memo/apis/deleteMemo";
 
 const props = defineProps<{

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCreateMemoForm } from "../composable/useCreateMemoForm";
-import PlusSvg from "@/shared/components/svgs/PlusSvg.vue";
+import PlusSvg from "@/components/svgs/PlusSvg.vue";
 
 const { content, disabledSubmit, submit } = useCreateMemoForm();
 </script>

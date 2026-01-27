@@ -1,6 +1,6 @@
 import { GenericSchema } from "valibot";
 import { computed, reactive, ref } from "vue";
-import { validationData } from "@/shared/utils/validationData";
+import { validationData } from "@/utils/validationData";
 
 /**
  * フォームの各値を管理するためのComposable
