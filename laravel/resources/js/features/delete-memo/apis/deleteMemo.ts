@@ -1,5 +1,5 @@
+import { MEMO_API } from "@/constants/urls";
 import { useMemoStore } from "@/entities/memo/stores";
-import { MEMO_API } from "@/shared/constants/urls";
 import axios from "axios";
 
 const memoStore = useMemoStore();

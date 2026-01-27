@@ -1,8 +1,8 @@
 import axios from "axios";
-import { MEMO_API } from "@/shared/constants/urls";
 import * as v from "valibot";
 import { ApiMemoToMemo, CreationMemo } from "@/entities/memo/schemas";
 import { useMemoStore } from "@/entities/memo/stores";
+import { MEMO_API } from "@/constants/urls";
 
 const memoStore = useMemoStore();
 
