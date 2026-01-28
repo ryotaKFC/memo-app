@@ -3,9 +3,9 @@ import EmptyState from "./EmptyState.vue";
 import { computed, onMounted } from "vue";
 import { useMemoStore } from "@/entities/memo/stores";
 import MemoCard from "./MemoCard.vue";
-import { fetchMemos } from "../apis/fetchMemos";
 import DocumentSvg from "@/components/svgs/DocumentSvg.vue";
-import MemoCountBadge from "@/features/memo-list/components/MemoCountBadge.vue";
+import { fetchMemos } from "@/features/fetchMemos/apis/fetchMemos";
+import MemoCountBadge from "@/widgets/memo-list/components/MemoCountBadge.vue";
 
 const memoStore = useMemoStore();
 onMounted(async () => {
