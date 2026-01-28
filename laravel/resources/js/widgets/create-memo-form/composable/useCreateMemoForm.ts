@@ -1,7 +1,7 @@
 import { useFormValue } from "@/composables/useFormValue";
 import { MemoContent, CreationMemo } from "@/entities/memo/schemas";
 import { computed, ref } from "vue";
-import { createMemo } from "../apis/createMemo";
+import { createMemo } from "@/features/create-memo/apis/createMemo";
 
 export function useCreateMemoForm() {
   const content = useFormValue("", MemoContent);
