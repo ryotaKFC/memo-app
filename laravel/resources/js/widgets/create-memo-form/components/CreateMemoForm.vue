@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useCreateMemoForm } from "../composable/useCreateMemoForm";
 import PlusSvg from "@/components/svgs/PlusSvg.vue";
+import ErrorMessage from "@/components/ui/ErrorMessage.vue";
 
 const { content, disabledSubmit, submit } = useCreateMemoForm();
 </script>
@@ -12,7 +13,7 @@ const { content, disabledSubmit, submit } = useCreateMemoForm();
       新しいメモ
     </h2>
     <form @submit.prevent="submit" class="space-y-4">
-      <ErrorMessage :message="content.error" />
+      <ErrorMessage v-if="content.error" :message="content.error" />
       <textarea
         @focus="content.onFocus"
         @keydown.enter.exact.prevent="submit"

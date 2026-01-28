@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import SiteHeader from "@/widgets/site-header/components/SiteHeader.vue";
-import SiteFooter from "@/widgets/site-footer/components/SiteFooter.vue";
-import CreateMemoForm from "@/widgets/create-memo-form/components/CreateMemoForm.vue";
-import MemoList from "@/widgets/memo-list/components/MemoList.vue";
+import { SiteHeader } from "@/widgets/site-header";
+import { SiteFooter } from "@/widgets/site-footer";
+import { CreateMemoForm } from "@/widgets/create-memo-form";
+import { MemoList } from "@/widgets/memo-list";
 </script>
 
 <template>
