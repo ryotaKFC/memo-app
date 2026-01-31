@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import TrashSvg from "@/components/svgs/TrashSvg.vue";
-import { deleteMemo } from "@/features/delete-memo/apis/deleteMemo";
+import { deleteMemo } from "@/features/delete-memo";
 
 const props = defineProps<{
   id: number;

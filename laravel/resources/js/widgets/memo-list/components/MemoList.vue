@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import EmptyState from "./EmptyState.vue";
 import { computed, onMounted } from "vue";
-import { useMemoStore } from "@/entities/memo/stores";
+import { useMemoStore } from "@/entities/memo";
 import MemoCard from "./MemoCard.vue";
 import DocumentSvg from "@/components/svgs/DocumentSvg.vue";
-import { fetchMemos } from "@/features/fetchMemos/apis/fetchMemos";
+import { fetchMemos } from "@/features/fetchMemos";
 import MemoCountBadge from "@/widgets/memo-list/components/MemoCountBadge.vue";
 
 const memoStore = useMemoStore();
