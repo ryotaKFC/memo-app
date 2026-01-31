@@ -1,6 +1,6 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
-import { Memo } from "../schemas";
+import { Memo } from "../schemas/memo-schemas";
 
 export const useMemoStore = defineStore("memo", () => {
   const memos = ref<Memo[]>([]);

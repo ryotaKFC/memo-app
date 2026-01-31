@@ -1,6 +1,6 @@
 import { MEMO_API } from "@/constants/urls";
-import { ApiMemoToMemo, Memo } from "@/entities/memo/schemas";
-import { useMemoStore } from "@/entities/memo/stores";
+import { ApiMemoToMemo, Memo } from "@/entities/memo";
+import { useMemoStore } from "@/entities/memo";
 import axios from "axios";
 import * as v from "valibot";
 
