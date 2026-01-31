@@ -4,7 +4,7 @@ import { computed, onMounted } from "vue";
 import { useMemoStore } from "@/entities/memo";
 import MemoCard from "./MemoCard.vue";
 import DocumentSvg from "@/components/svgs/DocumentSvg.vue";
-import { fetchMemos } from "@/features/fetchMemos";
+import { fetchMemos } from "@/features/fetch-memos";
 import MemoCountBadge from "@/widgets/memo-list/components/MemoCountBadge.vue";
 
 const memoStore = useMemoStore();
